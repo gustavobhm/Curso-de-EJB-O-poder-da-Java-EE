@@ -4,16 +4,24 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.UserTransaction;
 
 import br.com.caelum.livraria.modelo.Autor;
 
 @Stateless
+@TransactionManagement(TransactionManagementType.BEAN)
 public class AutorDao {
 
 	@PersistenceContext
 	private EntityManager manager;
+
+	@Inject
+	UserTransaction tx;
 
 	@PostConstruct
 	void aposCriacao() {
@@ -23,12 +31,14 @@ public class AutorDao {
 	public void salva(Autor autor) {
 		System.out.println("[INFO] Salvando o Autor " + autor.getNome());
 
-		/*
-		 * try { Thread.sleep(20000); // 20 segundos } catch (InterruptedException e) {
-		 * e.printStackTrace(); }
-		 */
+		try {
+			tx.begin();
+			manager.persist(autor);
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-		manager.persist(autor);
 		System.out.println("[INFO] Salvou o Autor " + autor.getNome());
 	}
 
