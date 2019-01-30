@@ -15,7 +15,11 @@ public class AutorService {
 	AutorDao dao;
 
 	public void adiciona(Autor autor) {
+
 		dao.salva(autor);
+
+		throw new LivrariaException();
+
 	}
 
 	public List<Autor> todosAutores() {
