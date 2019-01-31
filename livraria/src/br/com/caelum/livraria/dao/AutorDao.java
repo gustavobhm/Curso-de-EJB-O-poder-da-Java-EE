@@ -14,7 +14,8 @@ import javax.persistence.PersistenceContext;
 import br.com.caelum.livraria.modelo.Autor;
 
 @Stateless
-@TransactionManagement(TransactionManagementType.CONTAINER) //Opcional
+@TransactionManagement(TransactionManagementType.CONTAINER) // Opcional
+//@Interceptors({LogInterceptador.class})
 public class AutorDao {
 	@PersistenceContext
 	private EntityManager manager;
@@ -24,18 +25,14 @@ public class AutorDao {
 		System.out.println("[INFO] AutorDao foi criado.");
 	}
 
-	@TransactionAttribute(TransactionAttributeType.REQUIRED) //Opcional
+	@TransactionAttribute(TransactionAttributeType.REQUIRED) // Opcional
 	public void salva(Autor autor) {
 		System.out.println("[INFO] Salvando o Autor " + autor.getNome());
 
 		manager.persist(autor);
-		
+
 		System.out.println("[INFO] Salvou o Autor " + autor.getNome());
-		
-		//chamada ao serviço externo
-		
-		throw new RuntimeException("Serviço externo deu erro!");
-		
+
 	}
 
 	public List<Autor> todosAutores() {
