@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//src/br/com/correios/webservice/resource/Destinos.java=UTF-8
+encoding//src/br/com/correios/webservice/resource/EnderecoMobile.java=UTF-8
+encoding//src/br/com/correios/webservice/resource/Eventos.java=UTF-8
+encoding//src/br/com/correios/webservice/resource/Objeto.java=UTF-8
+encoding//src/br/com/correios/webservice/resource/Rastro.java=UTF-8
+encoding//src/br/com/correios/webservice/resource/RastroLocator.java=UTF-8
+encoding//src/br/com/correios/webservice/resource/Service.java=UTF-8
+encoding//src/br/com/correios/webservice/resource/ServicePortBindingStub.java=UTF-8
+encoding//src/br/com/correios/webservice/resource/Sroxml.java=UTF-8
